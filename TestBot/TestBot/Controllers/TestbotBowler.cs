@@ -92,8 +92,6 @@ namespace TestBot.Controllers
         [Route("Toss")]
         public Toss GetTossCall()
         {
-           
-
             return Toss.Tail;
         }
 

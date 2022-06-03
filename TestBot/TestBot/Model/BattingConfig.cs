@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using TestBot.Bowling;
 
-namespace TestBot.Model
+namespace TestBot.Batting
 {
     public class BattingConfig
     {
         public int Id { get; set; }
-        public string BowlingType { get; set; }
-        public string BowlerType { get; set; }
-        public string BowlSpeed { get; set; }
-        public string BowlingZone { get; set; }
-        public string SelectedShot { get; set; }
+        public BowlingType BowlingType { get; set; }
+        public BowlerTypes BowlerType { get; set; }
+        public int MinBowlSpeed { get; set; }
+        public int MaxBowlSpeed { get; set; }
+        public BallPitchZone BowlingZone { get; set; }
+        public Shots SelectedShot { get; set; }
     }
 }
