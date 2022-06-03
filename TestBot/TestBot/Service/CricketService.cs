@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using TestBot.Batting;
 using TestBot.Bowling;
@@ -18,7 +19,7 @@ namespace TestBot.Service
         {
             var battingData = GetBattingOptions();//get static data from helper class
             return battingData;
-        }        
+        }
 
         //Implement code to select the correct batting output based on Input
         public BatsmanModel GetOptimizedBattingData(BallModel ballInfo, List<FieldingModel> fieldSettings)
@@ -29,6 +30,10 @@ namespace TestBot.Service
             //If the bowler speed ranges from 90 - 110 - we should increase the bat speed
             //get all static data 
             List<BattingConfig> battingOptions = GetBattingOptions();
+
+
+            //caluclate the shot
+            var batData = battingOptions.Where(x => x.BowlerType == ballInfo.bowlerType && x.BowlingZone == ballInfo.zone && ballInfo.speed <= x.MinBowlSpeed && x.MaxBowlSpeed <= ballInfo.speed);
 
             //select options from intersection of field setting ,static data and bowling info
             //call rule engine class
