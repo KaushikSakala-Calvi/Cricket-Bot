@@ -17,10 +17,10 @@ namespace TestBot.Controllers
     [ApiController]
     public class TestbotBowler : ControllerBase
     {
-        private readonly CricketService _cricketService;
+        private readonly ICricketService _cricketService;
 
 
-        public TestbotBowler(CricketService cricketService)
+        public TestbotBowler(ICricketService cricketService)
         {
             _cricketService = cricketService;
         }
@@ -75,6 +75,7 @@ namespace TestBot.Controllers
         [Route("PostLastballStatus")]
         public HttpStatusCode PostLastballStatus(MatchProgressModel matchProgress)
         {
+            _cricketService.SaveLastBalInfo(matchProgress);
             return HttpStatusCode.OK;
         }
 

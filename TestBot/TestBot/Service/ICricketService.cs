@@ -2,6 +2,7 @@
 using TestBot.Batting;
 using TestBot.Bowling;
 using TestBot.Fielding;
+using TestBot.Match;
 
 namespace TestBot.Service
 {
@@ -10,6 +11,8 @@ namespace TestBot.Service
         List<BattingConfig> GetAllBattingOptions();
 
         BatsmanModel GetOptimizedBattingData(BallModel ballInfo, List<FieldingModel> fieldSettings);
+
+        void SaveLastBalInfo(MatchProgressModel matchProgress);
 
     }
 }
