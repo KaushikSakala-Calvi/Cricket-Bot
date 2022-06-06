@@ -157,15 +157,26 @@ namespace TestBot.Helper
             };
         }
 
-        public static List<BowlingConfig> GetBowlingAndFeildMatrix()
+        public static List<FieldingConfig> GetFeildMatrix()
         {
-            return new List<BowlingConfig>()
+            #region RAF
+
+            var RAFfieldingPositions = new List<FieldingModel>();
+            RAFfieldingPositions.Add(new FieldingModel() { fp = fieldPosition.z4, Prvshot = Shots.pull});
+            RAFfieldingPositions.Add(new FieldingModel() { fp = fieldPosition.z4, Prvshot = Shots.pull});
+            RAFfieldingPositions.Add(new FieldingModel() { fp = fieldPosition.z4, Prvshot = Shots.pull});
+            RAFfieldingPositions.Add(new FieldingModel() { fp = fieldPosition.z4, Prvshot = Shots.pull});
+            RAFfieldingPositions.Add(new FieldingModel() { fp = fieldPosition.z4, Prvshot = Shots.pull});
+            RAFfieldingPositions.Add(new FieldingModel() { fp = fieldPosition.z4, Prvshot = Shots.pull});
+            RAFfieldingPositions.Add(new FieldingModel() { fp = fieldPosition.z4, Prvshot = Shots.pull});
+            RAFfieldingPositions.Add(new FieldingModel() { fp = fieldPosition.z4, Prvshot = Shots.pull});
+            RAFfieldingPositions.Add(new FieldingModel() { fp = fieldPosition.z4, Prvshot = Shots.pull});
+
+            #endregion
+
+            return new List<FieldingConfig>()
             {
-                #region RAF
-
-                new BowlingConfig(){ bowlerName = "", bowlingType = BowlingType.Inswingers, bowlerType = BowlerTypes.RAF, speed = 140, zone = BallPitchZone.zone2 }
-
-                #endregion
+                
             };
         }
     }
