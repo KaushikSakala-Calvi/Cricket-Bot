@@ -6,7 +6,9 @@ namespace TestBot.Matrix
     public class BowlingMatirx : IBowlingMatirx
     {
         private string[] playerNames = { "Rafael", "Martina", "Venus", "Daniil", "Novak", "Serena", "Steffi", "Andrey", "Roger", "Sania" };
+
         private static int playerCounter = 0;
+
         public BallModel getNextBall()
         {
             var nextBall = new BallModel();

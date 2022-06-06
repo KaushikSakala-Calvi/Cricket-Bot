@@ -9,6 +9,7 @@ using TestBot.Batting;
 using TestBot.Bowling;
 using TestBot.Fielding;
 using TestBot.Match;
+using TestBot.Matrix;
 using TestBot.Service;
 
 namespace TestBot.Controllers
@@ -18,11 +19,13 @@ namespace TestBot.Controllers
     public class TestbotBowler : ControllerBase
     {
         private readonly ICricketService _cricketService;
+        private readonly IBowlingMatirx _bowlingMatirx;
 
 
-        public TestbotBowler(ICricketService cricketService)
+        public TestbotBowler(ICricketService cricketService, IBowlingMatirx bowlingMatirx)
         {
             _cricketService = cricketService;
+            _bowlingMatirx = bowlingMatirx;
         }
 
 
@@ -30,14 +33,16 @@ namespace TestBot.Controllers
         [Route("GetNextBall")]
         public BallModel GetNextBall()
         {
-            return new BallModel
-            {
-                bowingType = BowlingType.Outswinger,
-                bowlerName = "Rohit",
-                bowlerType = BowlerTypes.RAF,
-                speed = 140,
-                zone = BallPitchZone.zone1
-            };
+            return _bowlingMatirx.getNextBall();
+
+            //return new BallModel
+            //{
+            //    bowingType = BowlingType.Outswinger,
+            //    bowlerName = "Rohit",
+            //    bowlerType = BowlerTypes.RAF,
+            //    speed = 140,
+            //    zone = BallPitchZone.zone1
+            //};
         }
 
         [HttpPost]
