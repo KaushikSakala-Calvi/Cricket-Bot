@@ -52,10 +52,7 @@ namespace TestBot.Controllers
                 speed = 140,
                 zone = BallPitchZone.zone1
             };
-            //get field setting
-            var fieldSettings = Getfieldsetting();
-
-            var battingOption = _cricketService.GetOptimizedBattingData(ballThrown, fieldSettings);
+            var battingOption = _cricketService.GetOptimizedBattingData(ballThrown);
             return new BatsmanModel
             {
                 batSpeed = 60 ,
@@ -67,6 +64,7 @@ namespace TestBot.Controllers
         [Route("Postfieldsetting")]
         public HttpStatusCode Postfieldsetting(List<FieldingModel> fieldingModels)
         {
+            _cricketService.SaveFieldSettings(fieldingModels);
             return HttpStatusCode.OK;
         }
 

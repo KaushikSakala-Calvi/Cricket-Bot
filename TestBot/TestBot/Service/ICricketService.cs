@@ -10,9 +10,9 @@ namespace TestBot.Service
     {
         List<BattingConfig> GetAllBattingOptions();
 
-        BatsmanModel GetOptimizedBattingData(BallModel ballInfo, List<FieldingModel> fieldSettings);
+        BatsmanModel GetOptimizedBattingData(BallModel ballInfo);
 
         void SaveLastBalInfo(MatchProgressModel matchProgress);
-
+        void SaveFieldSettings(List<FieldingModel> fieldingModels);
     }
 }

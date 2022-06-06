@@ -168,5 +168,30 @@ namespace TestBot.Helper
                 #endregion
             };
         }
+
+        public static Dictionary<fieldPosition, int> GetBatSpeed()
+        {
+            return new Dictionary<fieldPosition, int> {
+                    {fieldPosition.z1, 80}, {fieldPosition.z2, 90}, {fieldPosition.z3, 100}, {fieldPosition.z4, 110},
+            };
+        }
+
+        public static List<Player> GetPlayers()
+        {
+            return new List<Player>()
+            {
+                new Player() {CanBowl = false, IsOut = false,Order = 1,Name = "Rafael Nadal"},
+                new Player() {CanBowl = false, IsOut = false,Order = 2,Name = "Martina Navratilova"},
+                new Player() {CanBowl = false, IsOut = false,Order = 3,Name = "Venus Williams"},
+                new Player() {CanBowl = false, IsOut = false,Order = 4,Name = "Daniil Medvedev"},
+                new Player() {CanBowl = false, IsOut = false,Order = 5,Name = "Novak Djokovic"},
+                new Player() {CanBowl = false, IsOut = false,Order = 6,Name = "Serena Williams"},
+                new Player() {CanBowl = true, IsOut = false,Order = 7,Name = "Steffi Graf"},
+                new Player() {CanBowl = true, IsOut = false,Order = 8,Name = "Alexander Zverev"},
+                new Player() {CanBowl = true, IsOut = false,Order = 9,Name = "Andrey Rublev"},
+                new Player() {CanBowl = true, IsOut = false,Order = 10,Name = "Roger federer"},
+                new Player() {CanBowl = true, IsOut = false,Order = 11,Name = "Sania mirza"},
+            };
+        }
     }
 }
