@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TestBot.Batting;
 using TestBot.Bowling;
+using TestBot.Model;
 
 namespace TestBot.Helper
 {
@@ -152,6 +153,14 @@ namespace TestBot.Helper
                 new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Googly,MinBowlSpeed = 90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Straightdrive},
                 new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Googly,MinBowlSpeed = 90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Straightdrive}
                 #endregion
+            };
+        }
+
+        public static List<BowlingConfig> GetBowlingAndFeildMatrix()
+        {
+            return new List<BowlingConfig>()
+            {
+
             };
         }
     }
