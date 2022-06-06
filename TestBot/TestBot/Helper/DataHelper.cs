@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TestBot.Batting;
 using TestBot.Bowling;
+using TestBot.Fielding;
 using TestBot.Model;
 
 namespace TestBot.Helper
@@ -160,7 +161,11 @@ namespace TestBot.Helper
         {
             return new List<BowlingConfig>()
             {
+                #region RAF
 
+                new BowlingConfig(){ bowlerName = "", bowlingType = BowlingType.Inswingers, bowlerType = BowlerTypes.RAF, speed = 140, zone = BallPitchZone.zone2 }
+
+                #endregion
             };
         }
     }
