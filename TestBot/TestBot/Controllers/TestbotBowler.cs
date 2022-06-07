@@ -49,21 +49,16 @@ namespace TestBot.Controllers
         [Route("PostBalldata")]
         public BatsmanModel PostBalldata(BallModel nextball)
         {
-            var ballThrown=new BallModel 
-            {
-                bowingType = BowlingType.Outswinger,
-                bowlerName = "Rohit",
-                bowlerType = BowlerTypes.RAF,
-                speed = 140,
-                zone = BallPitchZone.zone1
-            };
-            var battingOption = _cricketService.GetOptimizedBattingData(ballThrown);
-            return new BatsmanModel
-            {
-                batSpeed = 60 ,
-                shots = Shots.Cut,
-                batsman = "KapilDev"
-            };
+            //var ballThrown=new BallModel 
+            //{
+            //    bowingType = BowlingType.Outswinger,
+            //    bowlerName = "Rohit",
+            //    bowlerType = BowlerTypes.RAF,
+            //    speed = 140,
+            //    zone = BallPitchZone.zone1
+            //};
+            var batsmanModel = _cricketService.GetOptimizedBattingData(nextball);
+            return batsmanModel;
         }
         [HttpPost]
         [Route("Postfieldsetting")]
