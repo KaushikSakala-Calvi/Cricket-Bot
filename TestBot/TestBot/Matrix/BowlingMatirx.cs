@@ -7,13 +7,14 @@ namespace TestBot.Matrix
     {
         private string[] playerNames = { "Rafael", "Martina", "Venus", "Daniil", "Novak", "Serena", "Steffi", "Andrey", "Roger", "Sania" };
 
-        private static int playerCounter = 0;
-
         public BallModel getNextBall()
         {
             var nextBall = new BallModel();
 
-            nextBall.bowlerName = playerNames[playerCounter];
+            Random playerNameRandom = new Random();
+            int playerIndex = playerNameRandom.Next(playerNames.Length);
+            nextBall.bowlerName = playerNames[playerIndex];
+
 
             ///To Get Random Bowler Type
             Array bowlerTypeValues = Enum.GetValues(typeof(BowlerTypes));
@@ -25,16 +26,16 @@ namespace TestBot.Matrix
             ///To Get Random Bowling Type
             Array bowlingTypeValues;
             Random randomBowlingType = new Random();
-            if (nextBall.bowingType.ToString().StartsWith("RA"))
+            if (nextBall.bowlerType.ToString().StartsWith("RA"))
 
             {
-                bowlingTypeValues = Enum.GetValues(typeof(SeamerBowlingTypes));
-                nextBall.bowingType = (BowlingType)(SeamerBowlingTypes)bowlingTypeValues.GetValue(randomBowlingType.Next(bowlingTypeValues.Length));
+                bowlingTypeValues = Enum.GetValues(typeof(BowlingType));
+                nextBall.bowingType = (BowlingType)bowlingTypeValues.GetValue(randomBowlingType.Next(bowlingTypeValues.Length - 3));
             }
             else
             {
-                bowlingTypeValues = Enum.GetValues(typeof(SpinerBowlingTypes));
-                nextBall.bowingType = (BowlingType)(SpinerBowlingTypes)bowlingTypeValues.GetValue(randomBowlingType.Next(bowlingTypeValues.Length));
+                bowlingTypeValues = Enum.GetValues(typeof(BowlingType));
+                nextBall.bowingType = (BowlingType)bowlingTypeValues.GetValue(randomBowlingType.Next(bowlingTypeValues.Length - 3, bowlingTypeValues.Length));
             }
 
             //Select Speed of the Ball
@@ -69,7 +70,6 @@ namespace TestBot.Matrix
                 nextBall.speed = speedRandom.Next(minSpeed, maxSpeed);
             }
             nextBall.zone = BallPitchZone.zone2;
-
 
             return nextBall;
         }

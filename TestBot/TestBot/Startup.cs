@@ -30,6 +30,7 @@ namespace TestBot
             services.AddControllers();
             services.AddScoped<IBowlingMatirx, BowlingMatirx>();
             services.AddScoped<ICricketService, CricketService>();
+            services.AddScoped<IFieldingMatrix, FieldingMatrix>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

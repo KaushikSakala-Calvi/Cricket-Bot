@@ -20,12 +20,16 @@ namespace TestBot.Controllers
     {
         private readonly ICricketService _cricketService;
         private readonly IBowlingMatirx _bowlingMatirx;
+        private readonly IFieldingMatrix _fieldingMatrix;
+
+        private static BowlerTypes currentBowlingType = BowlerTypes.RAF;
 
 
-        public TestbotBowler(ICricketService cricketService, IBowlingMatirx bowlingMatirx)
+        public TestbotBowler(ICricketService cricketService, IBowlingMatirx bowlingMatirx, IFieldingMatrix fieldingMatrix)
         {
             _cricketService = cricketService;
             _bowlingMatirx = bowlingMatirx;
+            _fieldingMatrix = fieldingMatrix;
         }
 
 
@@ -33,8 +37,10 @@ namespace TestBot.Controllers
         [Route("GetNextBall")]
         public BallModel GetNextBall()
         {
-            return _bowlingMatirx.getNextBall();
-
+            
+            var nextBallDetails = _bowlingMatirx.getNextBall();
+            currentBowlingType = nextBallDetails.bowlerType;
+            return nextBallDetails;
             //return new BallModel
             //{
             //    bowingType = BowlingType.Outswinger,
@@ -82,9 +88,10 @@ namespace TestBot.Controllers
         [Route("Getfieldsetting")]
         public List<FieldingModel> Getfieldsetting()
         {
-            List<FieldingModel> fieldingModels = new List<FieldingModel>();
-            fieldingModels.Add(new FieldingModel { fp = fieldPosition.z1, Prvshot = Shots.Coverdrive });
-            return fieldingModels;
+            return _fieldingMatrix.GetFeildSetting(currentBowlingType);
+            //List<FieldingModel> fieldingModels = new List<FieldingModel>();
+            //fieldingModels.Add(new FieldingModel { fp = fieldPosition.z1, Prvshot = Shots.Coverdrive });
+            //return fieldingModels;
         }
 
         [HttpGet]
