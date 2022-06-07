@@ -7,13 +7,14 @@ namespace TestBot.Matrix
     {
         private string[] playerNames = { "Rafael", "Martina", "Venus", "Daniil", "Novak", "Serena", "Steffi", "Andrey", "Roger", "Sania" };
 
-        private static int playerCounter = 0;
-
         public BallModel getNextBall()
         {
             var nextBall = new BallModel();
 
-            nextBall.bowlerName = playerNames[playerCounter];
+            Random playerNameRandom = new Random();
+            int playerIndex = playerNameRandom.Next(playerNames.Length);
+            nextBall.bowlerName = playerNames[playerIndex];
+
 
             ///To Get Random Bowler Type
             Array bowlerTypeValues = Enum.GetValues(typeof(BowlerTypes));
@@ -69,7 +70,6 @@ namespace TestBot.Matrix
                 nextBall.speed = speedRandom.Next(minSpeed, maxSpeed);
             }
             nextBall.zone = BallPitchZone.zone2;
-            playerCounter++;
 
             return nextBall;
         }
