@@ -50,7 +50,7 @@ namespace TestBot.Service
 
             if(!batData.Any())
             {
-
+                batData = battingOptions.Where(x => x.BowlingType == ballInfo.bowingType);
             }
 
             BatsmanModel batsmanModel = GetBestPossibleShot(batData);
@@ -74,9 +74,18 @@ namespace TestBot.Service
                                     bat => bat.SelectedShot,
                                     field => field.Prvshot,
                                     (bat, field) => new BatsmanModel() { shots = bat.SelectedShot, FieldPosition = field.fp });
+            fieldPosition fp;
+            if (shots.Any())
+            {
+               fp = shots.Max(y => y.FieldPosition);
+            }
+            else
+            {
+                fp = fieldPosition.z4;
+                shots = batData.Select(x=>new BatsmanModel() { shots = x.SelectedShot, FieldPosition = fp });
+            }
 
-            var fp = shots.Max(y => y.FieldPosition);
-            var batSpeeds = DataHelper.GetBatSpeed();
+             var batSpeeds = DataHelper.GetBatSpeed();
 
             return new BatsmanModel()
             {
