@@ -25,16 +25,16 @@ namespace TestBot.Matrix
             ///To Get Random Bowling Type
             Array bowlingTypeValues;
             Random randomBowlingType = new Random();
-            if (nextBall.bowingType.ToString().StartsWith("RA"))
+            if (nextBall.bowlerType.ToString().StartsWith("RA"))
 
             {
-                bowlingTypeValues = Enum.GetValues(typeof(SeamerBowlingTypes));
-                nextBall.bowingType = (BowlingType)(SeamerBowlingTypes)bowlingTypeValues.GetValue(randomBowlingType.Next(bowlingTypeValues.Length));
+                bowlingTypeValues = Enum.GetValues(typeof(BowlingType));
+                nextBall.bowingType = (BowlingType)bowlingTypeValues.GetValue(randomBowlingType.Next(bowlingTypeValues.Length - 3));
             }
             else
             {
-                bowlingTypeValues = Enum.GetValues(typeof(SpinerBowlingTypes));
-                nextBall.bowingType = (BowlingType)(SpinerBowlingTypes)bowlingTypeValues.GetValue(randomBowlingType.Next(bowlingTypeValues.Length));
+                bowlingTypeValues = Enum.GetValues(typeof(BowlingType));
+                nextBall.bowingType = (BowlingType)bowlingTypeValues.GetValue(randomBowlingType.Next(bowlingTypeValues.Length - 3, bowlingTypeValues.Length));
             }
 
             //Select Speed of the Ball
@@ -69,7 +69,7 @@ namespace TestBot.Matrix
                 nextBall.speed = speedRandom.Next(minSpeed, maxSpeed);
             }
             nextBall.zone = BallPitchZone.zone2;
-
+            playerCounter++;
 
             return nextBall;
         }

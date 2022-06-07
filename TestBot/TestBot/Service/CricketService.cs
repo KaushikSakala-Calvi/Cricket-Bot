@@ -45,8 +45,8 @@ namespace TestBot.Service
                                 .Where(x => x.BowlerType == ballInfo.bowlerType
                                 && x.BowlingType==ballInfo.bowingType
                                     && x.BowlingZone == ballInfo.zone
-                                    && ballInfo.speed <= x.MinBowlSpeed
-                                    && x.MaxBowlSpeed <= ballInfo.speed);
+                                    && ballInfo.speed >= x.MinBowlSpeed
+                                    &&  ballInfo.speed<=x.MaxBowlSpeed);
 
             if(!batData.Any())
             {
