@@ -1,16 +1,15 @@
 ﻿using System;
+using System.Linq;
 using TestBot.Bowling;
 
 namespace TestBot.Matrix
 {
     public class BowlingMatirx : IBowlingMatirx
     {
-        private string[] playerNames = { "Rafael", "Martina", "Venus", "Daniil", "Novak", "Serena", "Steffi", "Andrey", "Roger", "Sania" };
-
         public BallModel getNextBall()
         {
             var nextBall = new BallModel();
-
+            string[] playerNames = Helper.DataHelper.GetPlayers().Where(x => x.CanBowl).Select(x => x.Name).ToArray();
             Random playerNameRandom = new Random();
             int playerIndex = playerNameRandom.Next(playerNames.Length);
             nextBall.bowlerName = playerNames[playerIndex];
