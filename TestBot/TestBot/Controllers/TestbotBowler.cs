@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using TestBot.Batting;
 using TestBot.Bowling;
 using TestBot.Fielding;
+using TestBot.Helper;
 using TestBot.Match;
 using TestBot.Matrix;
 using TestBot.Service;
@@ -37,43 +38,27 @@ namespace TestBot.Controllers
         [Route("GetNextBall")]
         public BallModel GetNextBall()
         {
-            
             var nextBallDetails = _bowlingMatirx.getNextBall();
             currentBowlingType = nextBallDetails.bowlerType;
+            LogHelper.LogMessage(nextBallDetails, "GetNextBall-Output");
             return nextBallDetails;
-            //return new BallModel
-            //{
-            //    bowingType = BowlingType.Outswinger,
-            //    bowlerName = "Rohit",
-            //    bowlerType = BowlerTypes.RAF,
-            //    speed = 140,
-            //    zone = BallPitchZone.zone1
-            //};
         }
 
         [HttpPost]
         [Route("PostBalldata")]
         public BatsmanModel PostBalldata(BallModel nextball)
         {
-            //var ballThrown=new BallModel 
-            //{
-            //    bowingType = BowlingType.Outswinger,
-            //    bowlerName = "Rohit",
-            //    bowlerType = BowlerTypes.RAF,
-            //    speed = 140,
-            //    zone = BallPitchZone.zone1
-            //};
-           // Newtonsoft.Json.JsonConvert.SerializeObject(nextball);
+            LogHelper.LogMessage(nextball, "PostBalldata-Input");
             var batsmanModel = _cricketService.GetOptimizedBattingData(nextball);
-            var jsonBatdata =Newtonsoft.Json.JsonConvert.SerializeObject(batsmanModel);
-            var jsonBalldata = Newtonsoft.Json.JsonConvert.SerializeObject(nextball);
-            System.Diagnostics.Trace.TraceInformation(jsonBatdata.ToString(), jsonBalldata.ToString());
+            LogHelper.LogMessage(batsmanModel, "PostBalldata-Output");
             return batsmanModel;
         }
+
         [HttpPost]
         [Route("Postfieldsetting")]
         public HttpStatusCode Postfieldsetting(List<FieldingModel> fieldingModels)
         {
+            LogHelper.LogMessage(fieldingModels, "Postfieldsetting-Input");
             _cricketService.SaveFieldSettings(fieldingModels);
             return HttpStatusCode.OK;
         }
@@ -83,6 +68,7 @@ namespace TestBot.Controllers
         [Route("PostLastballStatus")]
         public HttpStatusCode PostLastballStatus(MatchProgressModel matchProgress)
         {
+            LogHelper.LogMessage(matchProgress, "PostLastballStatus-Input");
             _cricketService.SaveLastBalInfo(matchProgress);
             return HttpStatusCode.OK;
         }
@@ -92,10 +78,10 @@ namespace TestBot.Controllers
         [Route("Getfieldsetting")]
         public List<FieldingModel> Getfieldsetting()
         {
-            return _fieldingMatrix.GetFeildSetting(currentBowlingType);
-            //List<FieldingModel> fieldingModels = new List<FieldingModel>();
-            //fieldingModels.Add(new FieldingModel { fp = fieldPosition.z1, Prvshot = Shots.Coverdrive });
-            //return fieldingModels;
+            var fieldSettings = _fieldingMatrix.GetFeildSetting(currentBowlingType);
+            LogHelper.LogMessage(fieldSettings, "Getfieldsetting-Output");
+
+            return fieldSettings;
         }
 
         [HttpGet]
