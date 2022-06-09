@@ -67,7 +67,7 @@ namespace TestBot.Controllers
             var batsmanModel = _cricketService.GetOptimizedBattingData(nextball);
             var jsonBatdata =Newtonsoft.Json.JsonConvert.SerializeObject(batsmanModel);
             var jsonBalldata = Newtonsoft.Json.JsonConvert.SerializeObject(nextball);
-            System.Diagnostics.Trace.TraceInformation(jsonBatdata.ToString(), jsonBalldata.ToString());
+            //System.Diagnostics.Trace.TraceInformation(jsonBatdata.ToString(), jsonBalldata.ToString());
             return batsmanModel;
         }
         [HttpPost]
