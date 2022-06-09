@@ -70,6 +70,11 @@ namespace TestBot.Matrix
             }
             nextBall.zone = BallPitchZone.zone2;
 
+            if(nextBall.bowingType == BowlingType.Bouncer && nextBall.speed >= 140)
+            {
+                nextBall.zone = BallPitchZone.zone1;
+            }
+
             return nextBall;
         }
     }
