@@ -18,7 +18,7 @@ namespace TestBot.Helper
                 new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Coverdrive},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Offdrive},
 
-                new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Cut},
+                new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Uppercut},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.squarecut},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Straightdrive},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Coverdrive},
@@ -29,11 +29,11 @@ namespace TestBot.Helper
                 new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Ondrive},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Straightdrive},
 
-                new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 141,MaxBowlSpeed=160,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.squarecut},
+                new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 141,MaxBowlSpeed=160,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.pull},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 141,MaxBowlSpeed=160,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Uppercut},
-                new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 141,MaxBowlSpeed=160,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Defensiveshot},
+                new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 141,MaxBowlSpeed=160,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.hook},
 
-                new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 141,MaxBowlSpeed=160,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Cut},
+                new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 141,MaxBowlSpeed=160,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Uppercut},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 141,MaxBowlSpeed=160,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Coverdrive},
 
                 new BattingConfig(){ BowlerType = BowlerTypes.RAF,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 141,MaxBowlSpeed=160,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Ondrive},
@@ -43,11 +43,11 @@ namespace TestBot.Helper
                 #endregion
 
                 #region RAFM
-                new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 110,MaxBowlSpeed=125,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
-                new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 110,MaxBowlSpeed=125,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Ondrive},
-                new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 110,MaxBowlSpeed=125,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Straightdrive},
+                new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 110,MaxBowlSpeed=125,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.pull},
+                new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 110,MaxBowlSpeed=125,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Uppercut},
+                new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 110,MaxBowlSpeed=125,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.hook},
 
-                new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 110,MaxBowlSpeed=125,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Cut},
+                new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 110,MaxBowlSpeed=125,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Uppercut},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 110,MaxBowlSpeed=125,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Coverdrive},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 110,MaxBowlSpeed=125,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Offdrive},
 
@@ -61,7 +61,7 @@ namespace TestBot.Helper
                 new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Coverdrive},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Offdrive},
 
-                new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Cut},
+                new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Uppercut},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Coverdrive},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAFM,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 125,MaxBowlSpeed=140,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Offdrive},
 
@@ -72,7 +72,7 @@ namespace TestBot.Helper
                 #endregion
 
                 #region RAS
-                new BattingConfig(){ BowlerType = BowlerTypes.RAS,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
+                new BattingConfig(){ BowlerType = BowlerTypes.RAS,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.pull},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAS,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Offdrive},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAS,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.latecut},
                 new BattingConfig(){ BowlerType = BowlerTypes.RAS,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Coverdrive},
@@ -97,14 +97,14 @@ namespace TestBot.Helper
                 #endregion
 
                 #region OB
-                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
-                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Defensiveshot},
+                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.hook},
+                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Uppercut},
 
                 new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
                 new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Defensiveshot},
 
-                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
-                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Defensiveshot},
+                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Ondrive},
+                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Straightdrive},
 
                 new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.OffBreak,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Coverdrive},
                 new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.OffBreak,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Offdrive},
@@ -113,12 +113,12 @@ namespace TestBot.Helper
                 new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Googly,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Ondrive},
                 new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Googly,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Ondrive},
 
-                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
-                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
+                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.pull},
+                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.hook},
                 new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
                 new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
-                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
-                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
+                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Ondrive},
+                new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Straightdrive},
 
                 new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.OffBreak,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Coverdrive},
                 new BattingConfig(){ BowlerType = BowlerTypes.OB,BowlingType = BowlingType.OffBreak,MinBowlSpeed = 90,MaxBowlSpeed=110,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Offdrive},
@@ -129,12 +129,12 @@ namespace TestBot.Helper
                 #endregion
 
                 #region LB
-                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
-                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Defensiveshot},
+                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Uppercut},
+                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Uppercut},
                 new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
                 new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Defensiveshot},
-                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
-                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Defensiveshot},
+                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Coverdrive},
+                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Straightdrive},
 
                 new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.LegBreak,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.hook},
                 new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.LegBreak,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Sweep},
@@ -142,8 +142,8 @@ namespace TestBot.Helper
                 new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Googly,MinBowlSpeed = 75,MaxBowlSpeed=90,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Ondrive},
 
 
-                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
-                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Defensiveshot},
+                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.pull},
+                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Bouncer,MinBowlSpeed = 90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.hook},
                 new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
                 new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Outswinger,MinBowlSpeed = 90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Defensiveshot},
                 new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Inswingers,MinBowlSpeed = 90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Defensiveshot},
@@ -151,7 +151,7 @@ namespace TestBot.Helper
 
                 new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.LegBreak,MinBowlSpeed =90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.hook},
                 new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.LegBreak,MinBowlSpeed =90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Sweep},
-                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Googly,MinBowlSpeed = 90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Straightdrive},
+                new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Googly,MinBowlSpeed = 90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone1,SelectedShot=Shots.Coverdrive},
                 new BattingConfig(){ BowlerType = BowlerTypes.LB,BowlingType = BowlingType.Googly,MinBowlSpeed = 90,MaxBowlSpeed=120,BowlingZone = BallPitchZone.zone2,SelectedShot=Shots.Straightdrive}
                 #endregion
             };
