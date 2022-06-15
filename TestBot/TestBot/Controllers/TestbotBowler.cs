@@ -45,7 +45,7 @@ namespace TestBot.Controllers
         {
             var nextBallDetails = _bowlingMatirx.getNextBall();
             currentBowlingType = nextBallDetails.bowlerType;            
-            _logger.LogError( "GetNextBall-Output : "+ JsonConvert.SerializeObject(nextBallDetails));
+            _logger.LogInformation( "GetNextBall-Output : "+ JsonConvert.SerializeObject(nextBallDetails));
             return nextBallDetails;
         }
 
