@@ -27,7 +27,7 @@ namespace TestBot.Controllers
         private readonly ILogger _logger;
 
         private static BowlerTypes currentBowlingType = BowlerTypes.RAF;
-        private static MatchProgressModel progressModel = new MatchProgressModel();
+        private static MatchProgressModel progressModel;
 
 
         public TestbotBowler(ICricketService cricketService, IBowlingMatirx bowlingMatirx, IFieldingMatrix fieldingMatrix, ILogger<TestbotBowler> logger)
@@ -43,7 +43,7 @@ namespace TestBot.Controllers
         [Route("GetNextBall")]
         public BallModel GetNextBall()
         {
-            var nextBallDetails = _bowlingMatirx.getNextBall();
+            var nextBallDetails = _bowlingMatirx.getNextBall(progressModel);
             currentBowlingType = nextBallDetails.bowlerType;            
             _logger.LogInformation( "GetNextBall-Output : "+ JsonConvert.SerializeObject(nextBallDetails));
             return nextBallDetails;

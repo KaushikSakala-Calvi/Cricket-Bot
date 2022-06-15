@@ -1,13 +1,25 @@
 ﻿using System;
 using System.Linq;
 using TestBot.Bowling;
+using TestBot.Match;
 
 namespace TestBot.Matrix
 {
     public class BowlingMatirx : IBowlingMatirx
     {
-        public BallModel getNextBall()
+
+        private static BallModel lastBowledBall;
+        public BallModel getNextBall(MatchProgressModel progressModel)
         {
+
+            if(progressModel?.iswicketlost == true || progressModel?.runonlastball == 0)
+            {
+                if (lastBowledBall != null)
+                {
+                    return lastBowledBall;
+                }
+            }
+
             var nextBall = new BallModel();
             string[] playerNames = Helper.DataHelper.GetPlayers().Where(x => x.CanBowl).Select(x => x.Name).ToArray();
             Random playerNameRandom = new Random();
@@ -75,7 +87,10 @@ namespace TestBot.Matrix
                 nextBall.zone = BallPitchZone.zone1;
             }
 
+            lastBowledBall = nextBall;
+
             return nextBall;
         }
+
     }
 }
