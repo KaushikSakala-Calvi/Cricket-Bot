@@ -53,7 +53,7 @@ namespace TestBot.Service
                 batData = battingOptions.Where(x => x.BowlingType == ballInfo.bowingType);
             }
 
-            BatsmanModel batsmanModel = GetBestPossibleShot(batData);
+            BatsmanModel batsmanModel = GetBestPossibleShot(batData, ballInfo);
 
             matchStats.Add(new HybridModel() { BallModel = ballInfo, BatsmanModel = batsmanModel }, null);
             return batsmanModel;
@@ -68,24 +68,54 @@ namespace TestBot.Service
                 players.OrderBy(x => x.Order).FirstOrDefault(x => !x.IsOut).IsOut = true;
         }
 
-        private BatsmanModel GetBestPossibleShot(IEnumerable<BattingConfig> batData)
+        private BatsmanModel GetBestPossibleShot(IEnumerable<BattingConfig> batData, BallModel ballInfo)
         {
             var shots = batData.Join(latestFieldSettings,
                                     bat => bat.SelectedShot,
                                     field => field.Prvshot,
-                                    (bat, field) => new BatsmanModel() { shots = bat.SelectedShot, FieldPosition = field.fp });
+                                    (bat, field) => new BatsmanModel() { shots = bat.SelectedShot, FieldPosition = field.fp }).ToList();
+
+            var prevShots = matchStats.Where(x => x.Key.BallModel.bowingType == ballInfo.bowingType
+            && x.Value.runonlastball > 0
+            && !x.Value.iswicketlost)
+                .Select(x => x.Key.BatsmanModel).ToList();
+
+
+            var removeShot = matchStats.Where(x => x.Key.BallModel.bowingType == ballInfo.bowingType
+            && x.Value.runonlastball == 0
+            || x.Value.iswicketlost)
+            .Select(x => x.Key.BatsmanModel).ToList();
+
+
+            if (removeShot.Any())
+            {
+                shots = shots.Except(removeShot).ToList();
+                //bestShots = (from shotList in shots
+                //               where !removeShot.Any(
+                //                                 x => x.shots == shotList.shots)
+                //               select shotList).ToList();
+            }
+
+
             fieldPosition fp;
             if (shots.Any())
             {
-               fp = shots.Max(y => y.FieldPosition);
+                fp = shots.Max(y => y.FieldPosition);
             }
             else
             {
                 fp = fieldPosition.z4;
-                shots = batData.Select(x=>new BatsmanModel() { shots = x.SelectedShot, FieldPosition = fp });
+                if (prevShots.Any())
+                {
+                    shots = prevShots;
+                }
+                else
+                {
+                    shots = batData.Select(x => new BatsmanModel() { shots = x.SelectedShot, FieldPosition = fp }).ToList();
+                }
             }
 
-             var batSpeeds = DataHelper.GetBatSpeed();
+            var batSpeeds = DataHelper.GetBatSpeed();
 
             return new BatsmanModel()
             {
