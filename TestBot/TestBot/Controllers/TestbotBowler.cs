@@ -5,6 +5,8 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using TestBot.Batting;
 using TestBot.Bowling;
 using TestBot.Fielding;
@@ -22,16 +24,18 @@ namespace TestBot.Controllers
         private readonly ICricketService _cricketService;
         private readonly IBowlingMatirx _bowlingMatirx;
         private readonly IFieldingMatrix _fieldingMatrix;
+        private readonly ILogger _logger;
 
         private static BowlerTypes currentBowlingType = BowlerTypes.RAF;
         private static MatchProgressModel progressModel = new MatchProgressModel();
 
 
-        public TestbotBowler(ICricketService cricketService, IBowlingMatirx bowlingMatirx, IFieldingMatrix fieldingMatrix)
+        public TestbotBowler(ICricketService cricketService, IBowlingMatirx bowlingMatirx, IFieldingMatrix fieldingMatrix, ILogger<TestbotBowler> logger)
         {
             _cricketService = cricketService;
             _bowlingMatirx = bowlingMatirx;
             _fieldingMatrix = fieldingMatrix;
+            _logger = logger;
         }
 
 
@@ -40,8 +44,8 @@ namespace TestBot.Controllers
         public BallModel GetNextBall()
         {
             var nextBallDetails = _bowlingMatirx.getNextBall();
-            currentBowlingType = nextBallDetails.bowlerType;
-            LogHelper.LogMessage(nextBallDetails, "GetNextBall-Output");
+            currentBowlingType = nextBallDetails.bowlerType;            
+            _logger.LogError( "GetNextBall-Output : "+ JsonConvert.SerializeObject(nextBallDetails));
             return nextBallDetails;
         }
 
@@ -51,7 +55,7 @@ namespace TestBot.Controllers
         {
             LogHelper.LogMessage(nextball, "PostBalldata-Input");
             var batsmanModel = _cricketService.GetOptimizedBattingData(nextball);
-            LogHelper.LogMessage(batsmanModel, "PostBalldata-Output");
+            _logger.LogInformation( "PostBalldata-Output : " + JsonConvert.SerializeObject(batsmanModel));
             return batsmanModel;
         }
 
@@ -59,7 +63,7 @@ namespace TestBot.Controllers
         [Route("Postfieldsetting")]
         public HttpStatusCode Postfieldsetting(List<FieldingModel> fieldingModels)
         {
-            LogHelper.LogMessage(fieldingModels, "Postfieldsetting-Input");
+            _logger.LogInformation( "Postfieldsetting-Input : " + JsonConvert.SerializeObject(fieldingModels));
             _cricketService.SaveFieldSettings(fieldingModels);
             return HttpStatusCode.OK;
         }
@@ -69,7 +73,7 @@ namespace TestBot.Controllers
         [Route("PostLastballStatus")]
         public HttpStatusCode PostLastballStatus(MatchProgressModel matchProgress)
         {
-            LogHelper.LogMessage(matchProgress, "PostLastballStatus-Input");
+            _logger.LogInformation( "PostLastballStatus-Input : " + JsonConvert.SerializeObject(matchProgress));
             progressModel = matchProgress;
             _cricketService.SaveLastBalInfo(matchProgress);
             return HttpStatusCode.OK;
@@ -81,7 +85,7 @@ namespace TestBot.Controllers
         public List<FieldingModel> Getfieldsetting()
         {
             var fieldSettings = _fieldingMatrix.GetFeildSetting(currentBowlingType);
-            LogHelper.LogMessage(fieldSettings, "Getfieldsetting-Output");
+            _logger.LogInformation( "Getfieldsetting-Output : " + JsonConvert.SerializeObject(fieldSettings));
 
             return fieldSettings;
         }
