@@ -24,6 +24,7 @@ namespace TestBot.Controllers
         private readonly IFieldingMatrix _fieldingMatrix;
 
         private static BowlerTypes currentBowlingType = BowlerTypes.RAF;
+        private static MatchProgressModel progressModel = new MatchProgressModel();
 
 
         public TestbotBowler(ICricketService cricketService, IBowlingMatirx bowlingMatirx, IFieldingMatrix fieldingMatrix)
@@ -69,6 +70,7 @@ namespace TestBot.Controllers
         public HttpStatusCode PostLastballStatus(MatchProgressModel matchProgress)
         {
             LogHelper.LogMessage(matchProgress, "PostLastballStatus-Input");
+            progressModel = matchProgress;
             _cricketService.SaveLastBalInfo(matchProgress);
             return HttpStatusCode.OK;
         }
