@@ -15,7 +15,7 @@ namespace TestBot.Matrix
         public BallModel getNextBall(MatchProgressModel progressModel)
         {
 
-            if(progressModel?.iswicketlost == true || progressModel?.runonlastball == 0)
+            if (progressModel?.iswicketlost == true || progressModel?.runonlastball == 0)
             {
                 if (lastBowledBall != null)
                 {
@@ -96,7 +96,7 @@ namespace TestBot.Matrix
                 }
 
                 avaoidBall = bowlingHistory.Any(x => x.Key.bowlerType == nextBall.bowlerType && x.Key.bowingType == nextBall.bowingType && x.Key.zone == nextBall.zone
-                                                && x.Key.speed >= nextBall.speed - 5 && x.Key.speed <= nextBall.speed + 5 && x.Value.runonlastball > 4);
+                                                && x.Key.speed >= nextBall.speed - 5 && x.Key.speed <= nextBall.speed + 5 && x.Value.runonlastball >= 4);
             } while (avaoidBall);
 
             bowlingHistory.Add(nextBall, null);
