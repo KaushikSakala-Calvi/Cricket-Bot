@@ -122,8 +122,8 @@ namespace TestBot.Service
 
             return new BatsmanModel()
             {
-               
-                shots = shots.FirstOrDefault(x => x.FieldPosition == fp).shots,
+
+                shots = shots.FirstOrDefault(x => x.FieldPosition == fp) != null ? shots.FirstOrDefault(x => x.FieldPosition == fp).shots : shots.FirstOrDefault().shots,
                 batSpeed = new Random().Next(batSpeeds[fp], (int)Constants.BAT_MAX_SPEED),
                 batsman = players.OrderBy(x => x.Order).FirstOrDefault(x => !x.IsOut).Name
             };
