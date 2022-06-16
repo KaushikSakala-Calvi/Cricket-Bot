@@ -44,8 +44,8 @@ namespace TestBot.Controllers
         public BallModel GetNextBall()
         {
             var nextBallDetails = _bowlingMatirx.getNextBall(progressModel);
-            currentBowlingType = nextBallDetails.bowlerType;            
-            _logger.LogInformation( "GetNextBall-Output : "+ JsonConvert.SerializeObject(nextBallDetails));
+            currentBowlingType = nextBallDetails.bowlerType;
+            _logger.LogInformation("GetNextBall-Output : " + JsonConvert.SerializeObject(nextBallDetails));
             return nextBallDetails;
         }
 
@@ -53,9 +53,9 @@ namespace TestBot.Controllers
         [Route("PostBalldata")]
         public BatsmanModel PostBalldata(BallModel nextball)
         {
-            LogHelper.LogMessage(nextball, "PostBalldata-Input");
+            _logger.LogInformation("PostBalldata-Input", nextball);
             var batsmanModel = _cricketService.GetOptimizedBattingData(nextball);
-            _logger.LogInformation( "PostBalldata-Output : " + JsonConvert.SerializeObject(batsmanModel));
+            _logger.LogInformation("PostBalldata-Output : " + JsonConvert.SerializeObject(batsmanModel));
             return batsmanModel;
         }
 
@@ -63,7 +63,7 @@ namespace TestBot.Controllers
         [Route("Postfieldsetting")]
         public HttpStatusCode Postfieldsetting(List<FieldingModel> fieldingModels)
         {
-            _logger.LogInformation( "Postfieldsetting-Input : " + JsonConvert.SerializeObject(fieldingModels));
+            _logger.LogInformation("Postfieldsetting-Input : " + JsonConvert.SerializeObject(fieldingModels));
             _cricketService.SaveFieldSettings(fieldingModels);
             return HttpStatusCode.OK;
         }
@@ -73,7 +73,7 @@ namespace TestBot.Controllers
         [Route("PostLastballStatus")]
         public HttpStatusCode PostLastballStatus(MatchProgressModel matchProgress)
         {
-            _logger.LogInformation( "PostLastballStatus-Input : " + JsonConvert.SerializeObject(matchProgress));
+            _logger.LogInformation("PostLastballStatus-Input : " + JsonConvert.SerializeObject(matchProgress));
             progressModel = matchProgress;
             _cricketService.SaveLastBalInfo(matchProgress);
             _bowlingMatirx.SaveLastBalInfo(matchProgress);
@@ -86,7 +86,7 @@ namespace TestBot.Controllers
         public List<FieldingModel> Getfieldsetting()
         {
             var fieldSettings = _fieldingMatrix.GetFeildSetting(currentBowlingType);
-            _logger.LogInformation( "Getfieldsetting-Output : " + JsonConvert.SerializeObject(fieldSettings));
+            _logger.LogInformation("Getfieldsetting-Output : " + JsonConvert.SerializeObject(fieldSettings));
 
             return fieldSettings;
         }
