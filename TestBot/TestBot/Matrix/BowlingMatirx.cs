@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TestBot.Bowling;
@@ -8,8 +10,14 @@ namespace TestBot.Matrix
 {
     public class BowlingMatirx : IBowlingMatirx
     {
+        private readonly ILogger _logger;
 
         private static BallModel lastBowledBall;
+
+        public BowlingMatirx(ILogger<BowlingMatirx> logger)
+        {
+            _logger = logger;
+        }
 
         static Dictionary<BallModel, MatchProgressModel> bowlingHistory = new Dictionary<BallModel, MatchProgressModel>();
         public BallModel getNextBall(MatchProgressModel progressModel)
@@ -19,7 +27,6 @@ namespace TestBot.Matrix
             {
                 if (lastBowledBall != null)
                 {
-                    bowlingHistory.Add(lastBowledBall, null);
                     return lastBowledBall;
                 }
             }
@@ -96,8 +103,15 @@ namespace TestBot.Matrix
                 }
 
                 avaoidBall = bowlingHistory.Any(x => x.Key.bowlerType == nextBall.bowlerType && x.Key.bowingType == nextBall.bowingType && x.Key.zone == nextBall.zone
-                                                && x.Key.speed >= nextBall.speed - 5 && x.Key.speed <= nextBall.speed + 5 && x.Value.runonlastball >= 4);
+                                                && (x.Key.speed >= nextBall.speed - 5 || x.Key.speed <= nextBall.speed + 5) && x.Value.runonlastball >= 4);
             } while (avaoidBall);
+
+            if(String.IsNullOrEmpty(nextBall.bowlerName))
+            {
+                _logger.LogCritical($"Next Ball object is not having values {JsonConvert.SerializeObject(nextBall)}");
+
+                nextBall = lastBowledBall;
+            }
 
             bowlingHistory.Add(nextBall, null);
 
