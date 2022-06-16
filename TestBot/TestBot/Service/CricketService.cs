@@ -73,27 +73,27 @@ namespace TestBot.Service
             var shots = batData.Join(latestFieldSettings,
                                     bat => bat.SelectedShot,
                                     field => field.Prvshot,
-                                    (bat, field) => new BatsmanModel() { shots = bat.SelectedShot, FieldPosition = field.fp }).ToList();
+                                    (bat, field) => new BatsmanModel() { shots = bat.SelectedShot, FieldPosition = field.fp }).Distinct().ToList();
 
             var prevShots = matchStats.Where(x => x.Key.BallModel.bowingType == ballInfo.bowingType
             && x.Value.runonlastball > 0
             && !x.Value.iswicketlost)
-                .Select(x => x.Key.BatsmanModel).ToList();
+                .Select(x => x.Key.BatsmanModel).Distinct().ToList();
 
 
             var removeShot = matchStats.Where(x => x.Key.BallModel.bowingType == ballInfo.bowingType
             && x.Value.runonlastball == 0
             || x.Value.iswicketlost)
-            .Select(x => x.Key.BatsmanModel).ToList();
+            .Select(x => x.Key.BatsmanModel).Distinct().ToList();
 
 
             if (removeShot.Any())
             {
-                shots = shots.Except(removeShot).ToList();
-                //bestShots = (from shotList in shots
-                //               where !removeShot.Any(
-                //                                 x => x.shots == shotList.shots)
-                //               select shotList).ToList();
+               //shots= shots.Except(removeShot).ToList();
+               shots = (from shotList in shots
+                             where !removeShot.Any(
+                                               x => x.shots == shotList.shots)
+                             select shotList).Distinct().ToList();
             }
 
 
