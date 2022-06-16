@@ -77,7 +77,7 @@ namespace TestBot.Service
 
             var prevShots = matchStats.Where(x => x.Key.BallModel.bowingType == ballInfo.bowingType
             && x.Value.runonlastball > 0
-            && !x.Value.iswicketlost)
+            && !x.Value.iswicketlost).OrderByDescending(y=>y.Value.runonlastball)
                 .Select(x => x.Key.BatsmanModel).Distinct().ToList();
 
 
@@ -111,7 +111,10 @@ namespace TestBot.Service
                 }
                 else
                 {
-                    shots = batData.Select(x => new BatsmanModel() { shots = x.SelectedShot, FieldPosition = fp }).ToList();
+                    Array values = Enum.GetValues(typeof(Shots));
+                    Random random = new Random();
+                    Shots randomShot = (Shots)values.GetValue(random.Next(values.Length));
+                    shots = batData.Select(x => new BatsmanModel() { shots = randomShot, FieldPosition = fp }).ToList();
                 }
             }
 
@@ -119,6 +122,7 @@ namespace TestBot.Service
 
             return new BatsmanModel()
             {
+               
                 shots = shots.FirstOrDefault(x => x.FieldPosition == fp).shots,
                 batSpeed = new Random().Next(batSpeeds[fp], (int)Constants.BAT_MAX_SPEED),
                 batsman = players.OrderBy(x => x.Order).FirstOrDefault(x => !x.IsOut).Name
