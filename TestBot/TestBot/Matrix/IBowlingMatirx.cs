@@ -1,9 +1,10 @@
 ﻿using TestBot.Bowling;
+using TestBot.Match;
 
 namespace TestBot.Matrix
 {
     public interface IBowlingMatirx
     {
-        BallModel getNextBall();
+        BallModel getNextBall(MatchProgressModel progressModel);
     }
 }
