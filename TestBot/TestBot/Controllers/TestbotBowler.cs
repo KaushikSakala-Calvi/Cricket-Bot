@@ -76,6 +76,7 @@ namespace TestBot.Controllers
             _logger.LogInformation( "PostLastballStatus-Input : " + JsonConvert.SerializeObject(matchProgress));
             progressModel = matchProgress;
             _cricketService.SaveLastBalInfo(matchProgress);
+            _bowlingMatirx.SaveLastBalInfo(matchProgress);
             return HttpStatusCode.OK;
         }
 
