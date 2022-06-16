@@ -43,12 +43,12 @@ namespace TestBot.Service
             //caluclate the shot
             var batData = battingOptions
                                 .Where(x => x.BowlerType == ballInfo.bowlerType
-                                && x.BowlingType==ballInfo.bowingType
+                                    && x.BowlingType == ballInfo.bowingType
                                     && x.BowlingZone == ballInfo.zone
                                     && ballInfo.speed >= x.MinBowlSpeed
-                                    &&  ballInfo.speed<=x.MaxBowlSpeed);
+                                    && ballInfo.speed <= x.MaxBowlSpeed);
 
-            if(!batData.Any())
+            if (!batData.Any())
             {
                 batData = battingOptions.Where(x => x.BowlingType == ballInfo.bowingType);
             }
@@ -76,24 +76,28 @@ namespace TestBot.Service
                                     (bat, field) => new BatsmanModel() { shots = bat.SelectedShot, FieldPosition = field.fp }).Distinct().ToList();
 
             var prevShots = matchStats.Where(x => x.Key.BallModel.bowingType == ballInfo.bowingType
-            && x.Value.runonlastball > 0
-            && !x.Value.iswicketlost).OrderByDescending(y=>y.Value.runonlastball)
-                .Select(x => x.Key.BatsmanModel).Distinct().ToList();
+                                          && x.Value.runonlastball > 0
+                                          && !x.Value.iswicketlost)
+                                    .OrderByDescending(y => y.Value.runonlastball)
+                                    .Select(x => x.Key.BatsmanModel)
+                                    .Distinct()
+                                    .ToList();
 
 
             var removeShot = matchStats.Where(x => x.Key.BallModel.bowingType == ballInfo.bowingType
-            && x.Value.runonlastball == 0
-            || x.Value.iswicketlost)
-            .Select(x => x.Key.BatsmanModel).Distinct().ToList();
+                                           && x.Value.runonlastball == 0
+                                           || x.Value.iswicketlost)
+                                        .Select(x => x.Key.BatsmanModel)
+                                        .Distinct()
+                                        .ToList();
 
 
             if (removeShot.Any())
             {
-               //shots= shots.Except(removeShot).ToList();
-               shots = (from shotList in shots
-                             where !removeShot.Any(
-                                               x => x.shots == shotList.shots)
-                             select shotList).Distinct().ToList();
+                shots = (from shotList in shots
+                         where !removeShot.Any(
+                                           x => x.shots == shotList.shots)
+                         select shotList).Distinct().ToList();
             }
 
 
@@ -104,17 +108,18 @@ namespace TestBot.Service
             }
             else
             {
-                fp = fieldPosition.z4;
                 if (prevShots.Any())
                 {
                     shots = prevShots;
+                    fp = shots.Max(y => y.FieldPosition);
                 }
                 else
                 {
                     Array values = Enum.GetValues(typeof(Shots));
+                    fp = fieldPosition.z4;
                     Random random = new Random();
                     Shots randomShot = (Shots)values.GetValue(random.Next(values.Length));
-                    shots = batData.Select(x => new BatsmanModel() { shots = randomShot, FieldPosition = fp }).ToList();
+                    shots = new List<BatsmanModel>() { new BatsmanModel() { shots = randomShot, FieldPosition = fp } };
                 }
             }
 
