@@ -103,9 +103,11 @@ namespace TestBot.Matrix
                     {
                         nextBall.zone = BallPitchZone.zone1;
                     }
-
-                    avaoidBall = bowlingHistory.Any(x => x.Key.bowlerType == nextBall.bowlerType && x.Key.bowingType == nextBall.bowingType && x.Key.zone == nextBall.zone
-                                                    && (x.Key.speed >= nextBall.speed - 5 || x.Key.speed <= nextBall.speed + 5) && x.Value.runonlastball >= 4);
+                    if (bowlingHistory.Values != null)
+                    {
+                        avaoidBall = bowlingHistory.Any(x => x.Key.bowlerType == nextBall.bowlerType && x.Key.bowingType == nextBall.bowingType && x.Key.zone == nextBall.zone
+                                                        && (x.Key.speed >= nextBall.speed - 5 || x.Key.speed <= nextBall.speed + 5) && x.Value.runonlastball >= 4);
+                    }
                 } while (avaoidBall);
 
                 if (String.IsNullOrEmpty(nextBall.bowlerName))
@@ -124,10 +126,12 @@ namespace TestBot.Matrix
             catch (Exception ex)
             {
                 _logger.LogCritical($"Exception occured {ex.StackTrace} , {ex.Message}");
+
                 if (lastBowledBall != null)
                 {
                     return lastBowledBall;
                 };
+
                 return new BallModel() { bowingType = BowlingType.Googly, bowlerType = BowlerTypes.LB, bowlerName = "Rafael Nadal", speed = 110, zone = BallPitchZone.zone2 };
             }
         }
